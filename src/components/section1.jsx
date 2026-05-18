@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { useEffect, useState } from "react";
 import './section1.css'
 import Ipad from '../assets/Ipad.png'
 import Image2 from '../assets/Image2.png'
@@ -7,15 +7,49 @@ import Image4 from '../assets/Image4.png'
 import Image5 from '../assets/Image5.png'
 
 function Section1() {
+    // const [scrolled, setScrolled] = useState(false);
 
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         if (window.scrollY > 50) {
+    //             setScrolled(true);
+    //         } else {
+    //             setScrolled(false);
+    //         }
+    //     };
+
+    //     window.addEventListener("scroll", handleScroll);
+
+    //     return () => {
+    //         window.removeEventListener("scroll", handleScroll);
+    //     };
+    // }, []);
+    const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
     return (
         <>
             <div className="hero">
-                <div className="navbar">
+                {/* <div className="navbar">
                     <div className="logo">
                         <p>Area</p>
                     </div>
-                    <div className="navlinks">
+                    <div className={`navlinks ${scrolled ? "fixedNav" : ""}`}>
                         <a className="navlinkTexts">
                             Benefits
                         </a>
@@ -33,6 +67,45 @@ function Section1() {
                         <p className="navBtnText">
                             Learn More
                         </p>
+                    </button>
+                </div> */}
+                <div className="navbar">
+                    <div className="logo">
+                        <p>Area</p>
+                    </div>
+
+                    {/* Hamburger */}
+                    <div
+                        className={`hamburger ${menuOpen ? "active" : ""}`}
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    {/* Nav Links */}
+                    <div
+                        className={`navlinks 
+                ${scrolled ? "fixedNav" : ""} 
+                ${menuOpen ? "showMenu" : ""}`}
+                    >
+                        <a className="navlinkTexts">Benefits</a>
+
+                        <a className="navlinkTexts">Specifications</a>
+
+                        <a className="navlinkTexts">How-to</a>
+
+                        <a className="navlinkTexts1">Contact us</a>
+
+                        <button className="navBtn mobileBtn">
+                            <p className="navBtnText">Learn More</p>
+                        </button>
+                    </div>
+
+                    {/* Desktop Button */}
+                    <button className="navBtn desktopBtn">
+                        <p className="navBtnText">Learn More</p>
                     </button>
                 </div>
                 <h1 className="heading">

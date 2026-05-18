@@ -27,9 +27,31 @@
     color: #000000;
 }
 
-.navlinks {
+/* .navlinks {
     display: flex;
     flex-direction: row;
+} */
+/* .navlinks {
+    display: flex;
+    flex-direction: row;
+    transition: all 0.3s ease;
+}
+
+.fixedNav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+
+    padding: 14px 24px;
+    border-radius: 40px;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navlinkTexts {
@@ -59,12 +81,119 @@
     border-radius: 24px;
     border: none;
     outline: none;
+} */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 20px 40px;
+}
+
+.logo p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 30px;
+    color: #000000;
+}
+
+/* NAV LINKS */
+
+.navlinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+/* SCROLL EFFECT */
+
+.fixedNav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+    padding: 14px 24px;
+    border-radius: 40px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* LINKS */
+
+.navlinkTexts,
+.navlinkTexts1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* BUTTON */
+
+.navBtn {
+    background-color: #485C11;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #FFFFFF;
+    padding: 14px 22px;
+    border-radius: 24px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* HAMBURGER */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 2000;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: black;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* ANIMATION */
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(11px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-11px);
+}
+
+/* MOBILE BUTTON */
+
+.mobileBtn {
+    display: none;
+}
+
+.desktopBtn {
+    display: block;
 }
 
 .heading {
     font-family: 'Playfair Display', serif;
     font-weight: 500;
-    font-size: 8rem;
+    font-size: 7.5rem;
     color: #000000;
     text-decoration: none;
     text-align: center;
@@ -592,6 +721,9 @@
 }
 
 .footerLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
     padding: 50px 0 90px 0;
 }
 
@@ -617,4 +749,106 @@
     font-size: 12px;
     line-height: 140%;
     letter-spacing: -1%;
+}
+
+@media screen and (max-width: 900px) {
+
+    /* .navbar {
+        padding: 20px;
+    }
+
+    .navlinks {
+        gap: 14px;
+    }
+
+    .logo p {
+        font-size: 24px;
+    }
+
+    .navBtn {
+        padding: 12px 18px;
+    } */
+    .navbar {
+        padding: 20px;
+    }
+
+    .logo p {
+        font-size: 24px;
+    }
+
+    .heading {
+        font-size: 5rem;
+        margin: 40px 0px;
+    }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 650px) {
+
+    /* .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .navlinks {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .navBtn {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .fixedNav {
+        width: 90%;
+        justify-content: center;
+        flex-wrap: wrap;
+    } */
+    .hamburger {
+        display: flex;
+    }
+
+    .desktopBtn {
+        display: none;
+    }
+
+    .mobileBtn {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navlinks {
+        position: absolute;
+        top: 90px;
+        right: -100%;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        background: white;
+        padding: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1500;
+    }
+
+    .navlinks.showMenu {
+        right: 20px;
+    }
+
+    .fixedNav {
+        top: 90px;
+        left: unset;
+        transform: none;
+    }
+
+    .heading {
+        font-size: 3rem;
+        margin: 20px 0px;
+    }
 }
